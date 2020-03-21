@@ -7,7 +7,7 @@ def get_data
 end
 
 def create_project_hash
-  :projects = {}
+  projects: {}
   get_data.each do |project|
     title = project.css(".bbcard_name a").text.strip
     image = project.css(".project-thumbnail img").attribute('src').value
