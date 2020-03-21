@@ -5,11 +5,11 @@ def get_data
   html = File.read('fixtures/kickstarter.html')
   doc = Nokogiri::HTML(html)
   projects = doc.css(".project-card")
-  projects
+  #projects
 end
 
 def create_project_hash
-  #hash = {}
+  hash = {}
   get_data.each do |project|
     title = project.css(".bbcard_name a").text.strip
     image = project.css(".project-thumbnail img").attribute('src').value
