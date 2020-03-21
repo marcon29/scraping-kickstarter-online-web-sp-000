@@ -8,35 +8,24 @@ def create_project_hash
     description = project.css(".bbcard_blurb").text.strip
     location = project.css(".project-meta a").attribute("data-location").value.scan(/\w+, \w\w/).first
     funded = project.css(".project-stats li:first-child").children.children.text.to_i
-  end
+
+    hash[title] = {
+      :location => location
+      :image_link => image
+      :description => description
+      :location => location
+      :percent_funded => funded
+    }
+   end
 end
 
 def get_data
-  require 'nokogiri'
+  #require 'nokogiri'
   html = File.read('fixtures/kickstarter.html')
   doc = Nokogiri::HTML(html)
   projects = doc.css(".project-card")
   projects
 end
-
-
-
-projects.each do |project|
-  title = project.css(".bbcard_name a").text.strip
-  image = project.css(".project-thumbnail img").attribute('src').value
-  description = project.css(".bbcard_blurb").text.strip
-  location = project.css(".project-meta a").attribute("data-location").value.scan(/\w+, \w\w/).first
-  funded = project.css(".project-stats li:first-child").children.children.text.to_i
-
-  hash[title] = {}
-  hash[title][image_link] = image
-  hash[title][description] = description
-  hash[title][location] = location
-  hash[title][percent_funded] = funded
-end
-
-
-
 
 # title: titles point to a hash of info
 #           first.css(".bbcard_name a").text.strip
