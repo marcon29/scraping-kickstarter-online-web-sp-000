@@ -17,12 +17,12 @@ def create_project_hash
     location = project.css(".project-meta a").attribute("data-location").value.scan(/\w+, \w\w/).first
     funded = project.css(".project-stats li:first-child").children.children.text.to_i
 
-    :projects[title] => {
-      :location => location,
-      :image_link => image,
-      :description => description,
-      :location => location,
-      :percent_funded => funded
+    :projects[title] = {
+      [:location] = location,
+      [:image_link] = image,
+      [:description] = description,
+      [:location] = location,
+      [:percent_funded] = funded
     }
     end
     :projects
