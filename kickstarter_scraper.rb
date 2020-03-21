@@ -24,8 +24,8 @@ def create_project_hash
       :location => location
       :percent_funded => funded
     }
-    hash
-   end
+    end
+    :projects
 end
 
 
