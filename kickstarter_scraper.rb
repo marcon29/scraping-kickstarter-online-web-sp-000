@@ -22,7 +22,7 @@ def create_project_hash
       :image_link => image,
       :description => description,
       :location => location,
-      :percent_funded => funded,
+      :percent_funded => funded
     }
     end
     :projects
