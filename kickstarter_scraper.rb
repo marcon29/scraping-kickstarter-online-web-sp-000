@@ -1,5 +1,13 @@
 require 'nokogiri'
 
+def get_data
+  #require 'nokogiri'
+  html = File.read('fixtures/kickstarter.html')
+  doc = Nokogiri::HTML(html)
+  projects = doc.css(".project-card")
+  projects
+end
+
 def create_project_hash
   hash = {}
   get_data.each do |project|
@@ -19,13 +27,6 @@ def create_project_hash
    end
 end
 
-def get_data
-  #require 'nokogiri'
-  html = File.read('fixtures/kickstarter.html')
-  doc = Nokogiri::HTML(html)
-  projects = doc.css(".project-card")
-  projects
-end
 
 # title: titles point to a hash of info
 #           first.css(".bbcard_name a").text.strip
