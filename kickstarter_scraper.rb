@@ -1,6 +1,7 @@
 require 'nokogiri'
 
 def create_project_hash
+  hash = {}
   get_data.each do |project|
     title = project.css(".bbcard_name a").text.strip
     image = project.css(".project-thumbnail img").attribute('src').value
@@ -21,7 +22,6 @@ end
 # title: titles point to a hash of info
 #           first.css(".bbcard_name a").text.strip
 # image: image link hosted on AmazonAWS
-#           first.css(".project-thumbnail")
 #           first.css(".project-thumbnail img").attribute('src').value
 # description: a string
 #           first.css(".bbcard_blurb").text.strip
